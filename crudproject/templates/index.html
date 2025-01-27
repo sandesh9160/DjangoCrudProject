@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <style>
+        /* Gradient background */
+        body {
+            background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Centered form container with box shadow */
+        form {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            margin: 70px auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Smooth hover effect for form */
+        form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Styled legend */
+        legend {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4a4a4a;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Label styling */
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #666;
+            display: inline-block;
+        }
+
+        /* Input fields styling */
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f9f9f9;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus {
+            box-shadow: 0 0 8px rgba(98, 132, 255, 0.7);
+            outline: none;
+        }
+
+        /* Submit button styling */
+        input[type="submit"],
+        .btn-display {
+            background: linear-gradient(45deg, #34eb83, #02c39a);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"]:hover,
+        .btn-display:hover {
+            background: linear-gradient(45deg, #02c39a, #34eb83);
+            transform: translateY(-3px);
+        }
+
+        /* Link styling */
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #6a11cb;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 480px) {
+            form {
+                width: 90%;
+                padding: 20px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"] {
+                width: calc(100% - 16px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form action="{% url 'save' %}" method="post">
+            {% csrf_token %}
+            <legend>CRUD Application Form</legend>
+            <p><label for="name">Enter Name:</label></p>
+            <p><input type="text" name="name" placeholder="John Doe" required></p>
+            <p><label for="address">Enter Address:</label></p>
+            <p><input type="text" name="address" placeholder="123 Main Street" required></p>
+            <p><label for="mail">Enter Email:</label></p>
+            <p><input type="email" name="mail" placeholder="example@mail.com" required></p>
+            <p><label for="age">Enter Age:</label></p>
+            <p><input type="number" name="age" placeholder="25" required></p>
+
+            <!-- Insert Button -->
+            <p><input type="submit" value="Insert"></p>
+
+            <!-- Display Button placed below Insert button inside the form -->
+            <p><input type="button" class="btn-display" value="Display" onclick="window.location.href='{% url 'display' %}'"></p>
+        </form>
+    </center>
+</body>
+
+</html>

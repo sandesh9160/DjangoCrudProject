@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        /* Page background */
+        body {
+            background: linear-gradient(120deg, #5c67e1, #89d4cf);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Centered heading */
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Table styling */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 15px 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        th {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #e6f7ff;
+            transition: background 0.3s ease;
+        }
+
+        /* Button styles */
+        .btn-update {
+            background: linear-gradient(45deg, #34eb83, #02c39a);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-update:hover {
+            background: linear-gradient(45deg, #02c39a, #34eb83);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-delete {
+            background: linear-gradient(45deg, #eb4034, #f04141);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background: linear-gradient(45deg, #f04141, #eb4034);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Back link container */
+        div.back-link {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Back link styling */
+        div.back-link a {
+            background: linear-gradient(45deg, #34ebba, #02a7f0);
+            padding: 12px 25px;
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        div.back-link a:hover {
+            background: linear-gradient(45deg, #02a7f0, #34ebba);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Student Details</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Mail</th>
+                <th>Age</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.mail }}</td>
+                <td>{{ student.age }}</td>
+                <td><a href="{% url 'update' student.id %}" class="btn-update">Update</a></td>
+                <td><a href="{% url 'delete' student.id %}" class="btn-delete">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="back-link">
+        <a href="{% url 'index' %}">Go to Index Page</a>
+    </div>
+</body>
+
+</html>
